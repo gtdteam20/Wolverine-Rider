@@ -34,8 +34,6 @@ app.use("/api/auth", forgotPasswordRoutes);
 app.use(tourRoutes);
 app.use('/form', formRoutes); 
 
-
-
 // Start the server
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {

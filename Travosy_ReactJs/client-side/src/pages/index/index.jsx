@@ -208,7 +208,8 @@ export default function TourGrid() {
       </section>
       <section className="relative md:py-24 py-16">
         {/* Tours Section */}
-        <div className="container relative">
+        <TopDestinationTwo />
+        <div className="mt-10 container relative">
           <div className="grid grid-cols-1 pb-8 text-center">
             <h3 className="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">
               Tour Packages
@@ -274,7 +275,7 @@ export default function TourGrid() {
       </section>
       <Client />
       <Footer />
-      <Switcher />
+      <Switcher/>
       {modalVisible && selectedTour && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex justify-center items-center">
           <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg relative w-11/12 md:w-2/3 lg:w-1/2">

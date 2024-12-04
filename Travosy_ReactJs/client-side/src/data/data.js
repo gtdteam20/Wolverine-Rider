@@ -19,18 +19,7 @@ import client5 from '../assets/images/client/05.jpg'
 import client6 from '../assets/images/client/06.jpg'
 import client7 from '../assets/images/client/07.jpg'
 
-import blog1 from '../assets/images/blog/1.jpg'
-import blog2 from '../assets/images/blog/2.jpg'
-import blog3 from '../assets/images/blog/3.jpg'
-import blog4 from '../assets/images/blog/4.jpg'
-import blog5 from '../assets/images/blog/5.jpg'
-import blog6 from '../assets/images/blog/6.jpg'
-import blog7 from '../assets/images/blog/7.jpg'
-import blog8 from '../assets/images/blog/8.jpg'
-import blog9 from '../assets/images/blog/9.jpg'
-
 import payment1 from '../assets/images/payments/visa.jpg'
-import payment2 from '../assets/images/payments/american-express.jpg'
 import payment3 from '../assets/images/payments/discover.jpg'
 import payment4 from '../assets/images/payments/mastercard.jpg'
 
@@ -39,17 +28,17 @@ import {FiShoppingCart,FiDribbble, FiLinkedin,FiFacebook,FiInstagram,FiTwitter,F
 export const topDestination = [
     {
         image:listing1,
-        place:'Rome, Italy',
+        place:'Leh-Ladakh, India',
         hotels:'3 Hotels'
     },
     {
         image:listing2,
-        place:'Singapore',
+        place:'bangkok',
         hotels:'3 Hotels'
     },
     {
         image:listing3,
-        place:'Paris, France',
+        place:'Manali / Solang',
         hotels:'3 Hotels'
     },
     {
@@ -59,22 +48,22 @@ export const topDestination = [
     },
     {
         image:listing5,
-        place:'Whistler, Canada',
+        place:'Dubai',
         hotels:'3 Hotels'
     },
     {
         image:listing6,
-        place:'Lumpur, Malaysia',
+        place:'Langkawi with Kuala Lumpur (Malaysia)',
         hotels:'3 Hotels'
     },
     {
         image:listing7,
-        place:'Sydney, Australia',
+        place:'Singapore Special',
         hotels:'3 Hotels'
     },
     {
         image:listing8,
-        place:'Virginia Beach',
+        place:'Bali with Malaysia',
         hotels:'3 Hotels'
     },
 ]
@@ -208,80 +197,7 @@ export const ClientData = [
     },
 ]
 
-export const blogData = [
-    {
-        id:1,
-        image:blog1,
-        date:'13th Sep 2024',
-        title:'This Spanish city is a feast for the eyes: Travosy',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Travel'
-    },
-    {
-        id:2,
-        image:blog2,
-        date:'29th Nov 2024',
-        title:'New Zealand’s South Island brims with majestic',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Tour'
-    },
-    {
-        id:3,
-        image:blog3,
-        date:'29th Dec 2024',
-        title:'When you visit the Eternal Rome City: Travosy',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Tourist'
-    },
-    {
-        id:4,
-        image:blog4,
-        date:'13th March 2024',
-        title:'My Story When I Backpacked Around The World',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Flight'
-    },
-    {
-        id:5,
-        image:blog5,
-        date:'5th May 2024',
-        title:'Organization of accounting at the enterprise',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Arab'
-    },
-    {
-        id:6,
-        image:blog6,
-        date:'19th June 2024',
-        title:'Three of the Best Day Trips to Make from Francisco',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Dubai'
-    },
-    {
-        id:7,
-        image:blog7,
-        date:'20th June 2024',
-        title:'Why Do People Travel ? Reasons People Travel in 2023',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Maldivas'
-    },
-    {
-        id:8,
-        image:blog8,
-        date:'31st Aug 2024',
-        title:'Jungles In Australia: Vermont’s Rugged, Retro Ski Mountain',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'News'
-    },
-    {
-        id:9,
-        image:blog9,
-        date:'1st Sep 2024',
-        title:'Traveller Visiting Ice Cave With Amazing Eye-catching Scenes',
-        desc:'This is required when, for example, the final text is not yet available.',
-        tag:'Packages'
-    },
-]
+
 
 export const footerSocial = [
     {
@@ -414,11 +330,6 @@ export const paymentData = [
         image:payment1,
         title:'Visa ending in 4578',
         date:'Expires in 13/03/2024'
-    },
-    {
-        image:payment2,
-        title:'American Express ending in 4578',
-        date:'Expires in 05/05/2024'
     },
     {
         image:payment3,

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import logo from "../../assets/images/logo-icon.png";
+import logo from "../../assets/images/logo-light.png";
 import Switcher from "../../components/switcher";
 import BackToHome from "../../components/back-to-home";
 
@@ -31,7 +31,7 @@ export default function ForgotPassword() {
                 <div className="container relative z-3">
                     <div className="flex justify-center">
                         <div className="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                            <Link to="/"><img src={logo} className="mx-auto" alt="Logo" /></Link>
+                            <Link to="/"><img src={logo} className="bg-dark mx-auto" alt="Logo" /></Link>
                             <h5 className="my-6 text-xl font-semibold">Reset Your Password</h5>
                             <form className="text-start" onSubmit={handleForgotPassword}>
                                 {message && <p className="text-green-500">{message}</p>}

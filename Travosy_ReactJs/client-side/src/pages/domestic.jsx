@@ -7,7 +7,7 @@ import Footer from "../components/footer";
 import Switcher from "../components/switcher";
 import Inquiry from "./inquiryForm"; // Assuming you have an Inquiry component
 
-import { FiMapPin, FiX , FaStar} from "../assets/icons/vander";
+import { FiMapPin, FiX , FaStar , FiChevronLeft, FiChevronRight} from "../assets/icons/vander";
 
 export default function TourGrid() {
   const [tours, setTours] = useState([]);
@@ -15,6 +15,8 @@ export default function TourGrid() {
   const [error, setError] = useState(null);
   const [selectedTour, setSelectedTour] = useState(null); // For modal
   const [modalVisible, setModalVisible] = useState(false); // Controls modal visibility
+  const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
+  const toursPerPage = 4; // Number of tours per page
   const BASE_URL = "http://localhost:3030"; // Base URL for backend API
   const navigate = useNavigate();
 
@@ -46,6 +48,18 @@ export default function TourGrid() {
   const closeModal = () => {
     setSelectedTour(null);
     setModalVisible(false);
+
+  };
+
+  // Calculate pagination
+  const indexOfLastTour = currentPage * toursPerPage;
+  const indexOfFirstTour = indexOfLastTour - toursPerPage;
+  const currentTours = tours.slice(indexOfFirstTour, indexOfLastTour);
+
+  const totalPages = Math.ceil(tours.length / toursPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -60,6 +74,13 @@ export default function TourGrid() {
             <h3 className="text-4xl leading-normal tracking-wider font-semibold text-white">Domestic Packages</h3>
           </div>
         </div>
+        <div className="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
+                <ul className="tracking-[0.5px] mb-0 inline-block">
+                    <li className="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><Link to="/">Wolverine-Rider</Link></li>
+                    <li className="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i className="mdi mdi-chevron-right"></i></li>
+                    <li className="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">domestic</li>
+                </ul>
+            </div>
       </section>
 
       {/* Tour Packages Section */}
@@ -119,6 +140,54 @@ export default function TourGrid() {
           ) : (
             <div className="text-center">No Domestic tours available.</div>
           )}
+          
+          {/* Pagination */}
+
+         <div className="grid md:grid-cols-12 grid-cols-1 mt-6">
+            <div className="md:col-span-12 text-center">
+              <nav aria-label="Page navigation example">
+                <ul className="inline-flex items-center -space-x-px">
+                  <li>
+                    <button
+                      disabled={currentPage === 1}
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      className={`size-[40px] inline-flex justify-center items-center ${
+                        currentPage === 1 ? "text-gray-300" : "text-slate-400 hover:text-white"
+                      } bg-white dark:bg-slate-900 rounded-s-3xl hover:bg-red-500`}
+                    >
+                      <FiChevronLeft className="size-5 rtl:rotate-180 rtl:-mt-1" />
+                    </button>
+                  </li>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <li key={index}>
+                      <button
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`size-[40px] inline-flex justify-center items-center ${
+                          currentPage === index + 1
+                            ? "bg-red-500 text-white"
+                            : "text-slate-400 hover:text-white hover:bg-red-500"
+                        }`}
+                      >
+                        {index + 1}
+                      </button>
+                    </li>
+                  ))}
+                  <li>
+                    <button
+                      disabled={currentPage === totalPages}
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      className={`size-[40px] inline-flex justify-center items-center ${
+                        currentPage === totalPages ? "text-gray-300" : "text-slate-400 hover:text-white"
+                      } bg-white dark:bg-slate-900 rounded-e-3xl hover:bg-red-500`}
+                    >
+                      <FiChevronRight className="size-5 rtl:rotate-180 rtl:-mt-1" />
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
         </div>
       </section>
 

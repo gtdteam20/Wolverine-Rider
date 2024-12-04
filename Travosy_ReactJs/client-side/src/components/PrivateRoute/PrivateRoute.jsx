@@ -1,11 +1,15 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem("token"); // Check token in localStorage
+    const token = localStorage.getItem("token");
+    const location = useLocation();
 
-  // If no token, redirect to the login page
-  return token ? children : <Navigate to="/login" replace />;
+    return token ? (
+        children
+    ) : (
+        <Navigate to="/login" state={{ from: location }} replace />
+    );
 };
 
 export default PrivateRoute;

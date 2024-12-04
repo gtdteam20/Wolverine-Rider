@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-
-import logo from "../../assets/images/logo-icon.png";
+import logo from "../../assets/images/logo-light.png";
 import Switcher from "../../components/switcher";
 import BackToHome from "../../components/back-to-home";
 
@@ -11,27 +9,39 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false); // Show/Hide password toggle
     const [loading, setLoading] = useState(false); // Loading state
-    const [error, setError] = useState("");
+    const [error, setError] = useState(""); // Error state for login issues
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    // Updated handleLogin function with fetch
+    const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true); // Start loading
+        setLoading(true); // Start loading state
+
         try {
-            const response = await axios.post("http://localhost:3030/api/auth/login", {
-                email,
-                password,
+            const response = await fetch("http://localhost:3030/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
             });
-            if (response.data.success) {
-                localStorage.setItem("token", response.data.token); // Store token
+
+            const data = await response.json();
+            if (data.success) {
+                localStorage.setItem("token", data.token);  // Store the JWT token
                 setLoading(false); // Reset loading state
                 navigate("/dashboard"); // Redirect to dashboard
             } else {
-                throw new Error("Login failed. Please try again.");
+                setError(data.message); // Set error message if login fails
+                setLoading(false); // Reset loading state
             }
-        } catch (err) {
-            setError(err.response?.data?.message || "Something went wrong!");
+        } catch (error) {
+            setError("Login failed. Please try again.");
             setLoading(false); // Reset loading state
+            console.error("Login error:", error);
         }
     };
 
@@ -43,10 +53,10 @@ export default function Login() {
                 <div className="container relative z-3">
                     <div className="flex justify-center">
                         <div className="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-700 rounded-md">
-                            <img src={logo} className="mx-auto" alt="Logo" />
+                            <img src={logo} className="bg-dark mx-auto" alt="Logo" />
                             <h5 className="my-6 text-xl font-semibold">Login</h5>
-                            <form className="text-start" onSubmit={handleSubmit}>
-                                {error && <p className="text-red-500">{error}</p>}
+                            <form className="text-start" onSubmit={handleLogin}> {/* Use handleLogin here */}
+                                {error && <p className="text-red-500">{error}</p>} {/* Display error if any */}
                                 <div className="grid grid-cols-1">
                                     <div className="mb-4">
                                         <label className="font-semibold" htmlFor="LoginEmail">Email Address:</label>
@@ -103,6 +113,7 @@ export default function Login() {
                     </div>
                 </div>
             </section>
+            {/* Assuming these components are already set up */}
             <Switcher />
             <BackToHome />
         </>
