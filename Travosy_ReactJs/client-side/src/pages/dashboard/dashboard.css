@@ -1,0 +1,86 @@
+/* Sidebar Styling */
+.sidebar {
+  width:200px;
+  height:100vh;
+  background-color: #343a40; /* Dark theme */
+  color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.sidebar a {
+  color: #adb5bd;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #495057;
+  color: #fff;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-top: 10px;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 15px;
+  margin-bottom: 20px;
+  color: #ced4da;
+  border-bottom: 1px solid #495057;
+}
+
+/* Icon Styling */
+.sidebar .mdi {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+  /* Navbar Styles */
+  .navbar-brand {
+    text-align: center;
+    flex: 1; /* Ensures it occupies enough space to stay centered */
+  }
+  
+  .navbar-brand img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .navbar-brand img:hover {
+    transform: scale(1.1); /* Subtle hover effect for logo */
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 16px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffc107; /* Highlight color on hover */
+  }
+  
+  .btn-danger {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-brand {
+      flex: 0;
+      text-align: center;
+    }
+  
+    .btn-danger {
+      width: 100%;
+      margin-top: 5px;
+    }
+  }
+  
